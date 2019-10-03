@@ -13,62 +13,78 @@ a img, :link img, :visited img {
   border: 0; }
 
 .main__window {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   position: absolute;
   top: 200px;
-  left: 0;
   right: 0;
+  left: 300px;
   bottom: 0;
   margin: auto;
-  width: 40vw;
-  max-width: 1000px;
-  min-width: 400px; }
-  .main__window .menu {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between; }
-    .main__window .menu #select__level {
-      background: #7B8585;
-      border: none;
-      padding: 5px 10px;
+  max-width: 800px;
+  width: 80vw; }
+  .main__window .game {
+    margin-right: 50px; }
+    .main__window .game .menu {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      justify-content: space-between; }
+      .main__window .game .menu #select__level {
+        background: #7B8585;
+        border: none;
+        padding: 5px 10px;
+        color: rgba(58, 61, 63, 0.73); }
+      .main__window .game .menu #name {
+        background: #D7E1E1;
+        border: none;
+        padding: 5px 10px;
+        color: rgba(58, 61, 63, 0.73); }
+      .main__window .game .menu #start {
+        background: #324241;
+        border: none;
+        padding: 5px 10px;
+        color: white; }
+      .main__window .game .menu #restart {
+        background: #3cbc72;
+        border: none;
+        padding: 5px 10px;
+        color: white; }
+    .main__window .game .status {
+      text-align: center;
       color: rgba(58, 61, 63, 0.73); }
-    .main__window .menu #name {
-      background: #D7E1E1;
-      border: none;
-      padding: 5px 10px;
-      color: rgba(58, 61, 63, 0.73); }
-    .main__window .menu #start {
-      background: #324241;
-      border: none;
-      padding: 5px 10px;
-      color: white; }
-    .main__window .menu #restart {
-      background: #3cbc72;
-      border: none;
-      padding: 5px 10px;
-      color: white; }
-  .main__window .status {
-    text-align: center;
-    color: rgba(58, 61, 63, 0.73); }
-  .main__window #field {
-    margin: 0 auto;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    width: 80%; }
-    .main__window #field #field:after {
-      content: '';
-      display: block;
-      padding-top: 100%; }
-    .main__window #field .square {
-      width: 19%;
-      display: block;
-      border: 1px solid grey; }
-    .main__window #field .square:after {
-      content: '';
-      display: block;
-      padding-top: 100%; }
+    .main__window .game #field {
+      margin: 0 auto;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      width: 80%;
+      max-width: 400px; }
+      .main__window .game #field #field:after {
+        content: '';
+        display: block;
+        padding-top: 100%; }
+      .main__window .game #field .square {
+        width: 19%;
+        height: 60px;
+        display: block;
+        border: 1px solid grey; }
+      .main__window .game #field .square:after {
+        content: '';
+        display: block; }
+      .main__window .game #field .white {
+        background: white; }
+      .main__window .game #field .blue {
+        background: blue; }
+      .main__window .game #field .green {
+        background: green; }
+      .main__window .game #field .red {
+        background: red; }
+  .main__window .results {
+    padding-left: 50px;
+    border-left: 2px solid gray; }

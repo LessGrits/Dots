@@ -3,92 +3,124 @@ html, body {
   margin: 0;
   outline: none;
 }
+
 html {
   font-size: 1em;
 }
+
 body {
   font-size: 100%;
 }
+
 a img, :link img, :visited img {
   border: 0;
 }
 
 $color: rgba(58, 61, 63, 0.73);
 
-.main__window{
+.main__window {
+  display: flex;
   position: absolute;
-  top:200px;
-  left: 0 ;
-  right: 0;
+  top: 200px;
+  right:0;
+  left:300px;
   bottom: 0;
   margin: auto;
+max-width: 800px;
+  width: 80vw;
 
-  width: 40vw;
-  max-width: 1000px;
-  min-width: 400px;
+  .game {
+    margin-right: 50px;
 
-  .menu{
-    display: flex;
-    justify-content: space-between;
+    .menu {
+      display: flex;
+      justify-content: space-between;
 
 
-    #select__level{
-      background: #7B8585;
-      border: none;
-      padding:5px 10px;
+      #select__level {
+        background: #7B8585;
+        border: none;
+        padding: 5px 10px;
+        color: $color;
+      }
+
+      #name {
+        background: #D7E1E1;
+        border: none;
+        padding: 5px 10px;
+        color: $color;
+      }
+
+      #start {
+        background: #324241;
+        border: none;
+        padding: 5px 10px;
+        color: white;
+      }
+
+      #restart {
+        background: #3cbc72;
+        border: none;
+        padding: 5px 10px;
+        color: white;
+      }
+    }
+
+    .status {
+      text-align: center;
       color: $color;
     }
 
-    #name{
-      background: #D7E1E1;
-      border: none;
-      padding:5px 10px;
-      color: $color;
-    }
+    #field {
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      width: 80%;
+      max-width: 400px;
 
-    #start{
-      background: #324241;
-      border: none;
-      padding:5px 10px;
-      color:white;
-    }
-    #restart{
-      background: #3cbc72;
-      border: none;
-      padding:5px 10px;
-      color:white;
+      #field:after {
+        content: '';
+        display: block;
+        padding-top: 100%;
+
+      }
+
+      .square {
+        width: 19%;
+        height: 60px;
+        display: block;
+        border: 1px solid grey;
+      }
+
+      .square:after {
+        content: '';
+        display: block;
+        //padding-top: 100%;
+      }
+
+
+      .white {
+        background: white;
+      }
+
+      .blue {
+        background: blue;
+      }
+
+      .green {
+        background: green;
+      }
+
+      .red {
+        background: red;
+      }
+
     }
   }
 
-  .status{
-    text-align: center;
-    color: $color;
+  .results{
+    padding-left: 50px;
+    border-left: 2px solid gray;
   }
 
-  #field{
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    width: 80%;
-
-    #field:after{
-      content: '';
-      display: block;
-      padding-top: 100%;
-    }
-
-    .square{
-      width:19%;
-      display: block;
-      border: 1px solid grey;
-    }
-
-    .square:after{
-      content: '';
-      display: block;
-      padding-top: 100%;
-    }
-
-
-  }
 }

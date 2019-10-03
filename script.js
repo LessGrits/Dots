@@ -1,80 +1,114 @@
 let field = document.querySelector('#field');
 let playBtn = document.querySelector('#start');
-let restartBtn = document.querySelector('#restart');
+// let restartBtn = document.querySelector('#restart');
 let countField =  document.querySelector('#count');
-let count = 0;
+let getName = document.querySelector('#name');
+let name;
+let getLevel = document.querySelector('#select__level');
+let level;
+let userCount = 0;
 let botCount = 0;
-playBtn.onclick = gamingProces;
-restartBtn.onclick = () => {
+let result = document.querySelector('#result');
+let squareList = [];
 
+window.onload = ()=>{
+    createField();
 };
 
+playBtn.onclick = gamingProces;
 
 function gamingProces() {
+
     getStartData();
-    createField();
-    autoPaint();
+    autoPaint(level);
     paintSquare();
 }
 
 
 function getStartData() {
+    name = getName.value;
+    level = getLevel.value;
 
-    playBtn.disabled = true;
+    // playBtn.disabled = true;
+
 }
 
 
 function createField() {
+
     let squares = '';
-    for (let i = 0, squareList = []; i < 25; i++) {
+    for (let i = 0; i < 25; i++) {
         squareList[i] = i;
-        squares += "<div class='square'></div>";
+        squares += "<div class='square white'></div>";
     }
     field.innerHTML = squares
+
 }
 
 function paintSquare() {
-    field.onclick = (event) => {
+    field.onmousedown = (event) => {
         let div = event.target;
-        if (div.classList.contains('square')) {
-            if (div.style.backgroundColor == 'blue') {
-                div.style.backgroundColor = "green";
-                count++;
-                countField.innerHTML = `${count}/${botCount}`
-            }
+        if (div.classList.contains('square') && div.classList.contains('blue')) {
+            div.classList.remove("blue");
+            div.classList.add("green");
+            userCount++;
+                countField.innerHTML = `${userCount}/${botCount}`;
+            showResult()
         }
     }
 }
 
 function random() {
-    return Math.floor(Math.random() * 25);
+    return squareList.splice(Math.floor(Math.random() * squareList.length),1);
 }
 
-function autoPaint() {
+function autoPaint(computerTime) {
+    console.log(computerTime);
     let squares = document.getElementsByClassName('square');
-    setTimeout(paint, 500);
-    let rand = random();
+
+
+   let rand = random();
+
+    let bluePaint =  setTimeout(paint, 1000);
+    if(squares[rand] === undefined){
+        clearTimeout(bluePaint);
+    }
+
+
+
     function paint() {
 
-        if (squares[rand].style.backgroundColor !== 'green' && squares[rand].style.backgroundColor !== 'blue' && squares[rand].style.backgroundColor !== 'red') {
-            squares[rand].style.backgroundColor = 'blue';
-            autoPaint();
+        if ( squares[rand].classList.contains('white')) {
+            squares[rand].classList.remove("white");
+            squares[rand].classList.add("blue");
+            setTimeout(() => redPaint(rand), computerTime);
+            autoPaint(level);
 
         } else {
             paint();
         }
     }
 
-    setTimeout(() => redPaint(rand), 1100);
 
     function redPaint(r) {
-        if (squares[r].style.backgroundColor !== 'green') {
-            squares[r].style.backgroundColor = 'red';
+        if (!squares[r].classList.contains('green')) {
+            squares[r].classList.remove('blue');
+
+            squares[r].classList.add('red');
             botCount++;
-            countField.innerHTML = `${count}/${botCount}`
+            countField.innerHTML = `${userCount}/${botCount}`;
+            showResult();
         }
     }
-
+}
+function showResult(){
+    let allColuredSquares = document.getElementsByClassName('red').length + document.getElementsByClassName('green').length;
+    console.log(allColuredSquares);
+    if(allColuredSquares === 25){
+        result.innerHTML = botCount > userCount ? 'result: Computer win':`result: ${name} win`;
+    }
 }
 
 // TODO use addEventListener!
+// TODO use class \/
+

@@ -7,24 +7,31 @@
 </head>
 <body>
 <div class="main__window">
-    <div class="menu">
-        <select  name="level" id="select__level">
-            <option value="">Pick game mode</option>
-            <option value="">Easy</option>
-            <option value="">Normal</option>
-            <option value="">Pro</option>
-        </select>
-        <input  type="text" id="name" placeholder="Name">
-        <input  type="submit" id="start" value="Play">
-        <input  type="submit" id="restart" value="Restart">
+    <div class="game">
+        <div class="menu">
+            <select name="level" id="select__level">
+                <option value="2000">Easy</option>
+                <option value="1000">Normal</option>
+                <option value="350">Pro</option>
+            </select>
+            <input type="text" id="name" value="Player" placeholder="Name" required>
+            <input type="submit" id="start" value="Play">
+            <input type="submit" id="restart" value="Restart">
+        </div>
+        <h2 class="status" id="result">Result:</h2>
+        <h2 class="status" id='count'>0</h2>
+        <div id="field">
+        </div>
     </div>
-    <h2 class="status">Message here</h2>
-    <h2 class="status" id = 'count'>0</h2>
-    <div id="field">
-
-
+    <div class="results">
+        <h2>Leader board</h2>
+        <div class="board">
+            <div class="one_result">
+                <span>Name</span>
+                <span>Date</span>
+            </div>
+        </div>
     </div>
-
 </div>
 </body>
 <script src="script.js"></script>
