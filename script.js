@@ -1,35 +1,46 @@
 let field = document.querySelector('#field');
 let playBtn = document.querySelector('#start');
-// let restartBtn = document.querySelector('#restart');
-let countField =  document.querySelector('#count');
 let getName = document.querySelector('#name');
-let name;
 let getLevel = document.querySelector('#select__level');
+let currentResult = document.querySelector('#result');
+let boardResults = document.querySelector('.board');
+let name;
 let level;
 let userCount = 0;
 let botCount = 0;
-let result = document.querySelector('#result');
+let currentWinner ='';
 let squareList = [];
+let localResults = [];
+
+const month = ['jun',"feb","march","apr","may","june","july","aug","sep","oct","nov","dec"];
+
 
 window.onload = ()=>{
     createField();
 };
 
-playBtn.onclick = gamingProces;
+playBtn.onclick = ()=>{
+    createField();
+    getStartData();
+    autoPaint(level);
+    paintSquare();
+};
 
 function gamingProces() {
 
     getStartData();
     autoPaint(level);
     paintSquare();
+
 }
 
 
 function getStartData() {
     name = getName.value;
     level = getLevel.value;
-
-    // playBtn.disabled = true;
+    userCount = 0;
+    botCount = 0;
+    playBtn.disabled = true;
 
 }
 
@@ -52,7 +63,7 @@ function paintSquare() {
             div.classList.remove("blue");
             div.classList.add("green");
             userCount++;
-                countField.innerHTML = `${userCount}/${botCount}`;
+            // countField.innerHTML = `${userCount}/${botCount}`;
             showResult()
         }
     }
@@ -96,7 +107,7 @@ function autoPaint(computerTime) {
 
             squares[r].classList.add('red');
             botCount++;
-            countField.innerHTML = `${userCount}/${botCount}`;
+            // countField.innerHTML = `${userCount}/${botCount}`;
             showResult();
         }
     }
@@ -105,7 +116,24 @@ function showResult(){
     let allColuredSquares = document.getElementsByClassName('red').length + document.getElementsByClassName('green').length;
     console.log(allColuredSquares);
     if(allColuredSquares === 25){
-        result.innerHTML = botCount > userCount ? 'result: Computer win':`result: ${name} win`;
+        currentWinner = (botCount > userCount) ? "Computer" : name;
+        currentResult.innerHTML = `result: ${currentWinner} win`;
+        let date = new Date();
+        localResults.push({name:currentWinner,date: `${date.getDay()}.${month[date.getMonth()]}.${date.getFullYear()}   ${date.getHours()}:${date.getMinutes()}`})
+        writeBoard();
+        playBtn.disabled = false;
+    }
+
+
+}
+
+function writeBoard(){
+    boardResults.innerHTML = '';
+    for (let game of localResults){
+        boardResults.innerHTML += `<div class="one_result">
+                <span id="player__name__in__board">Name:${game.name}</span>
+                <span id="game__date">Date:${game.date}</span>
+            </div>`
     }
 }
 

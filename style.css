@@ -23,7 +23,11 @@ a img, :link img, :visited img {
   bottom: 0;
   margin: auto;
   max-width: 800px;
-  width: 80vw; }
+  width: 90vw;
+  max-height: 50vh; }
+  .main__window .status {
+    text-align: center;
+    color: rgba(58, 61, 63, 0.73); }
   .main__window .game {
     margin-right: 50px; }
     .main__window .game .menu {
@@ -36,26 +40,20 @@ a img, :link img, :visited img {
       .main__window .game .menu #select__level {
         background: #7B8585;
         border: none;
-        padding: 5px 10px;
-        color: rgba(58, 61, 63, 0.73); }
+        padding: 20px 40px;
+        color: rgba(58, 61, 63, 0.73);
+        cursor: pointer; }
       .main__window .game .menu #name {
         background: #D7E1E1;
         border: none;
-        padding: 5px 10px;
+        padding: 20px 40px;
         color: rgba(58, 61, 63, 0.73); }
       .main__window .game .menu #start {
         background: #324241;
         border: none;
-        padding: 5px 10px;
-        color: white; }
-      .main__window .game .menu #restart {
-        background: #3cbc72;
-        border: none;
-        padding: 5px 10px;
-        color: white; }
-    .main__window .game .status {
-      text-align: center;
-      color: rgba(58, 61, 63, 0.73); }
+        padding: 20px 40px;
+        color: white;
+        cursor: pointer; }
     .main__window .game #field {
       margin: 0 auto;
       display: -webkit-box;
@@ -63,7 +61,6 @@ a img, :link img, :visited img {
       display: flex;
       -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-      width: 80%;
       max-width: 400px; }
       .main__window .game #field #field:after {
         content: '';
@@ -71,9 +68,10 @@ a img, :link img, :visited img {
         padding-top: 100%; }
       .main__window .game #field .square {
         width: 19%;
-        height: 60px;
+        height: 70px;
         display: block;
-        border: 1px solid grey; }
+        border: 1px solid grey;
+        cursor: crosshair; }
       .main__window .game #field .square:after {
         content: '';
         display: block; }
@@ -87,4 +85,17 @@ a img, :link img, :visited img {
         background: red; }
   .main__window .results {
     padding-left: 50px;
-    border-left: 2px solid gray; }
+    border-left: 2px solid gray;
+    width: 40%; }
+    .main__window .results #board__header {
+      margin-top: 45px; }
+    .main__window .results .one_result {
+      background: #D7E1E1;
+      padding: 20px;
+      border-bottom: 2px solid white;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      justify-content: space-between; }

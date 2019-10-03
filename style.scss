@@ -22,12 +22,18 @@ $color: rgba(58, 61, 63, 0.73);
   display: flex;
   position: absolute;
   top: 200px;
-  right:0;
-  left:300px;
+  right: 0;
+  left: 300px;
   bottom: 0;
   margin: auto;
-max-width: 800px;
-  width: 80vw;
+  max-width: 800px;
+  width: 90vw;
+  max-height: 50vh;
+
+  .status {
+    text-align: center;
+    color: $color;
+  }
 
   .game {
     margin-right: 50px;
@@ -40,43 +46,35 @@ max-width: 800px;
       #select__level {
         background: #7B8585;
         border: none;
-        padding: 5px 10px;
+        padding: 20px 40px;
         color: $color;
+        cursor: pointer;
       }
 
       #name {
         background: #D7E1E1;
         border: none;
-        padding: 5px 10px;
+        padding: 20px 40px;
         color: $color;
       }
 
       #start {
         background: #324241;
         border: none;
-        padding: 5px 10px;
+        padding: 20px 40px;
         color: white;
-      }
-
-      #restart {
-        background: #3cbc72;
-        border: none;
-        padding: 5px 10px;
-        color: white;
+        cursor: pointer;
       }
     }
 
-    .status {
-      text-align: center;
-      color: $color;
-    }
 
     #field {
       margin: 0 auto;
       display: flex;
       flex-wrap: wrap;
-      width: 80%;
+
       max-width: 400px;
+
 
       #field:after {
         content: '';
@@ -87,9 +85,10 @@ max-width: 800px;
 
       .square {
         width: 19%;
-        height: 60px;
+        height: 70px;
         display: block;
         border: 1px solid grey;
+        cursor: crosshair;
       }
 
       .square:after {
@@ -118,9 +117,22 @@ max-width: 800px;
     }
   }
 
-  .results{
+  .results {
     padding-left: 50px;
     border-left: 2px solid gray;
+    width: 40%;
+
+    #board__header {
+      margin-top: 45px;
+    }
+
+    .one_result {
+      background: #D7E1E1;
+      padding: 20px ;
+      border-bottom: 2px solid white;
+      display: flex;
+      justify-content: space-between;
+    }
   }
 
 }
