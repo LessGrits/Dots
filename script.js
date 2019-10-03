@@ -17,6 +17,8 @@ const month = ['jun', "feb", "march", "apr", "may", "june", "july", "aug", "sep"
 
 window.onload = () => {
     createField();
+    localResults = JSON.parse(localStorage.savedResults);
+    writeBoard();
 };
 
 
@@ -111,13 +113,14 @@ function showResult() {
     console.log(allColuredSquares);
     if (allColuredSquares === 25) {
         currentWinner = (botCount > userCount) ? "Computer" : name;
-        currentResult.innerHTML = `result: ${currentWinner} win`;
+        currentResult.innerHTML = `Result: ${currentWinner} win`;
         let date = new Date();
         localResults.push({
             name: currentWinner,
             date: `${date.getDay() - 1}.${month[date.getMonth()]}.${date.getFullYear()}   ${date.getHours()}:${date.getMinutes()}`
         });
         writeBoard();
+        localStorage.savedResults = JSON.stringify(localResults);
         playBtn.style.cursor = 'pointer';
         playBtn.value = 'Play again';
         playBtn.disabled = false;

@@ -20,7 +20,7 @@ a img, :link img, :visited img {
   top: 0;
   right: 0;
   left: 100px;
-  bottom: 0;
+  bottom: 100px;
   margin: auto;
   max-width: 1000px;
   width: 90vw;
