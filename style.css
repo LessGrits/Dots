@@ -17,12 +17,12 @@ a img, :link img, :visited img {
   display: -ms-flexbox;
   display: flex;
   position: absolute;
-  top: 200px;
+  top: 0;
   right: 0;
-  left: 300px;
+  left: 100px;
   bottom: 0;
   margin: auto;
-  max-width: 800px;
+  max-width: 1000px;
   width: 90vw;
   max-height: 50vh; }
   .main__window .status {
@@ -43,6 +43,8 @@ a img, :link img, :visited img {
         padding: 20px 40px;
         color: rgba(58, 61, 63, 0.73);
         cursor: pointer; }
+        .main__window .game .menu #select__level option {
+          margin: 20px 40px; }
       .main__window .game .menu #name {
         background: #D7E1E1;
         border: none;
@@ -53,7 +55,8 @@ a img, :link img, :visited img {
         border: none;
         padding: 20px 40px;
         color: white;
-        cursor: pointer; }
+        cursor: pointer;
+        text-transform: uppercase; }
     .main__window .game #field {
       margin: 0 auto;
       display: -webkit-box;
@@ -88,7 +91,7 @@ a img, :link img, :visited img {
     border-left: 2px solid gray;
     width: 40%; }
     .main__window .results #board__header {
-      margin-top: 45px; }
+      margin-top: 75px; }
     .main__window .results .one_result {
       background: #D7E1E1;
       padding: 20px;
