@@ -17,7 +17,9 @@ const month = ['jun', "feb", "march", "apr", "may", "june", "july", "aug", "sep"
 
 window.onload = () => {
     createField();
-    localResults = JSON.parse(localStorage.savedResults);
+    if(localStorage.savedResults){
+        localResults = JSON.parse(localStorage.savedResults);
+    }
     writeBoard();
 };
 
@@ -65,30 +67,28 @@ function paintSquare() {
 
 
 function random() {
-    return squareList.splice(Math.floor(Math.random() * squareList.length), 1);
+    if(squareList.length>0){
+        return squareList.splice(Math.floor(Math.random() * squareList.length), 1)[0];
+    }
+   return 100;
 }
 
 
 function autoPaint(computerTime) {
-    console.log(computerTime);
     let squares = document.getElementsByClassName('square');
-
     let rand = random();
-
     let bluePaint = setTimeout(paint, 1000);
-    if (squares[rand] === undefined) {
+    if (rand === 100) {
         clearTimeout(bluePaint);
     }
 
 
     function paint() {
-
         if (squares[rand].classList.contains('white')) {
             squares[rand].classList.remove("white");
             squares[rand].classList.add("blue");
             setTimeout(() => redPaint(rand), computerTime);
             autoPaint(level);
-
         } else {
             paint();
         }
@@ -98,10 +98,8 @@ function autoPaint(computerTime) {
     function redPaint(r) {
         if (!squares[r].classList.contains('green')) {
             squares[r].classList.remove('blue');
-
             squares[r].classList.add('red');
             botCount++;
-            // countField.innerHTML = `${userCount}/${botCount}`;
             showResult();
         }
     }
@@ -110,15 +108,15 @@ function autoPaint(computerTime) {
 
 function showResult() {
     let allColuredSquares = document.getElementsByClassName('red').length + document.getElementsByClassName('green').length;
-    console.log(allColuredSquares);
     if (allColuredSquares === 25) {
         currentWinner = (botCount > userCount) ? "Computer" : name;
         currentResult.innerHTML = `Result: ${currentWinner} win`;
         let date = new Date();
         localResults.push({
             name: currentWinner,
-            date: `${date.getDay() - 1}.${month[date.getMonth()]}.${date.getFullYear()}   ${date.getHours()}:${date.getMinutes()}`
+            date: `${date.getDate()}.${month[date.getMonth()]}.${date.getFullYear()}   ${date.getHours()}:${date.getMinutes()}`
         });
+
         writeBoard();
         localStorage.savedResults = JSON.stringify(localResults);
         playBtn.style.cursor = 'pointer';
